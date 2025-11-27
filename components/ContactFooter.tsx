@@ -51,7 +51,7 @@ export const ContactFooter: React.FC<ContactFooterProps> = ({ tCta, tFooter, onB
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center text-white text-2xl font-bold mb-4">
                  <DynamicIcon name="Wrench" className="mr-2 rtl:mr-0 rtl:ml-2 text-primary-500" />
-                 MobileMechanic.ae
+                 Mobile Mechanic UAE
               </div>
               <p className="max-w-xs">{tFooter.companyDesc}</p>
             </div>

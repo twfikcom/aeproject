@@ -33,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, toggleLang, onBuyClick 
                 <DynamicIcon name="Wrench" size={24} />
              </div>
              <span className="text-xl md:text-2xl font-black text-secondary-900 tracking-tight">
-               Mobile<span className="text-primary-600">Mechanic</span>.ae
+               Mobile <span className="text-primary-600">Mechanic</span> UAE
              </span>
           </div>
 

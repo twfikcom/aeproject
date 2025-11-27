@@ -61,7 +61,7 @@ export const CONTENT: Record<'en' | 'ar', Translations> = {
       ],
     },
     features: {
-      heading: "Why Choose MobileMechanic.ae?",
+      heading: "Why Choose Mobile Mechanic UAE?",
       subheading: "We are changing the way car maintenance works.",
       items: [
         { id: '1', title: "We Come To You", description: "Save time and towing fees. We fix your car at your home, office, or roadside." },
@@ -85,7 +85,7 @@ export const CONTENT: Record<'en' | 'ar', Translations> = {
     },
     footer: {
       companyDesc: "The leading on-demand mobile mechanic service in the UAE.",
-      rights: "© 2024 MobileMechanic.ae. All rights reserved.",
+      rights: "© 2024 Mobile Mechanic UAE. All rights reserved.",
       quickLinks: "Quick Links",
       contactUs: "Contact Us",
       buyWebsite: "Buy this Website",
@@ -165,7 +165,7 @@ export const CONTENT: Record<'en' | 'ar', Translations> = {
       ],
     },
     features: {
-      heading: "لماذا تختار MobileMechanic.ae؟",
+      heading: "لماذا تختار Mobile Mechanic UAE؟",
       subheading: "نحن نغير مفهوم صيانة السيارات.",
       items: [
         { id: '1', title: "نأتي إليك", description: "وفر وقتك ورسوم السحب. نصلح سيارتك في منزلك، مكتبك، أو على الطريق." },
@@ -189,7 +189,7 @@ export const CONTENT: Record<'en' | 'ar', Translations> = {
     },
     footer: {
       companyDesc: "خدمة الميكانيكي المتنقل الرائدة عند الطلب في الإمارات العربية المتحدة.",
-      rights: "© 2024 MobileMechanic.ae. جميع الحقوق محفوظة.",
+      rights: "© 2024 Mobile Mechanic UAE. جميع الحقوق محفوظة.",
       quickLinks: "روابط سريعة",
       contactUs: "اتصل بنا",
       buyWebsite: "شراء هذا الموقع",
