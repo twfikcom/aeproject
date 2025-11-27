@@ -56,7 +56,7 @@ const CONTENT = {
     cta: {
       heading: "Ready to get back on the road?",
       subheading: "Don't let car trouble ruin your day. Call us now for immediate assistance.",
-      btn: "Call 800-MECHANIC"
+      btn: "Call +201010373331"
     },
     footer: {
       desc: "The leading on-demand mobile mechanic service in the UAE.",
@@ -134,7 +134,7 @@ const CONTENT = {
     cta: {
       heading: "مستعد للعودة إلى الطريق؟",
       subheading: "لا تدع مشاكل السيارة تفسد يومك. اتصل بنا الآن للحصول على مساعدة فورية.",
-      btn: "اتصل بـ 800-MECHANIC"
+      btn: "اتصل بـ 201010373331+"
     },
     footer: {
       desc: "خدمة الميكانيكي المتنقل الرائدة عند الطلب في الإمارات العربية المتحدة.",
