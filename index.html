@@ -3,8 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Mechanic UAE - Expert Car Repair at Your Doorstep</title>
-    <meta name="description" content="Looking for a reliable Mobile Mechanic in UAE? We provide expert car repair and maintenance at your doorstep. Battery, Tyres, Oil Change, AC Repair & more. 24/7 Service available in Dubai, Abu Dhabi & across UAE.">
+    <title>Mobile Mechanic UAE - 24/7 Car Repair Dubai, Abu Dhabi & Sharjah</title>
+    <meta name="description" content="Best Mobile Mechanic in UAE. We come to you for Battery Replacement, Oil Change, Diagnostics & Car Repair. 24/7 Service in Dubai, Abu Dhabi, Sharjah. Call Now.">
+    <meta name="keywords" content="Mobile Mechanic Dubai, Car Battery Replacement UAE, Mobile Car Service Abu Dhabi, Car Repair at Home, Roadside Assistance UAE, Oil Change Service Dubai">
+    <link rel="canonical" href="https://mobilemechanic.ae">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="Mobile Mechanic UAE - Expert Car Repair at Your Doorstep">
+    <meta property="og:description" content="Stuck on the road? Our certified mechanics come to you 24/7 anywhere in the UAE. Battery, Tyres, Oil Change & more.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://mobilemechanic.ae">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mobile Mechanic UAE - 24/7 On-Demand Service">
+    <meta name="twitter:description" content="We fix your car at your home, office, or roadside. Expert mobile mechanics in UAE.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+
+    <!-- Local SEO Geo Tags -->
+    <meta name="geo.region" content="AE">
+    <meta name="geo.placename" content="Dubai">
+    <meta name="geo.position" content="25.2048;55.2708">
+    <meta name="ICBM" content="25.2048, 55.2708">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -40,12 +61,52 @@
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Schema Markup (JSON-LD) for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "name": "Mobile Mechanic UAE",
+      "image": "https://images.unsplash.com/photo-1487754180451-c456f719a1fc",
+      "telephone": "+201010373331",
+      "url": "https://mobilemechanic.ae",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "AE",
+        "addressLocality": "Dubai"
+      },
+      "areaServed": [
+        "Dubai",
+        "Abu Dhabi",
+        "Sharjah",
+        "Ajman",
+        "Ras Al Khaimah"
+      ],
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "sameAs": [
+        "https://wa.me/201010373331"
+      ],
+      "description": "Professional Mobile Mechanic service in UAE. We provide onsite car battery replacement, oil change, tire service, and diagnostics 24/7."
+    }
+    </script>
 <script type="importmap">
 {
   "imports": {
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
     "vite": "https://aistudiocdn.com/vite@^7.2.4",
     "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
@@ -53,7 +114,7 @@
 }
 </script>
 </head>
-<body class="font-sans text-gray-800 bg-white">
+<body class="font-sans text-gray-800 bg-white pb-20 md:pb-0">
 
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
@@ -66,7 +127,7 @@
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                     </div>
                     <span class="text-xl md:text-2xl font-black text-secondary-900 tracking-tight">
-                        Mobile <span class="text-primary-600">Mechanic</span> UAE
+                        Mobile <span class="text-primary-600">Mechanic</span> <span class="hidden sm:inline">UAE</span>
                     </span>
                 </div>
 
@@ -127,7 +188,7 @@
     <section id="hero" class="relative pt-24 pb-16 md:pt-32 md:pb-24 lg:pt-40 lg:pb-32 overflow-hidden bg-secondary-900">
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Mechanic" class="w-full h-full object-cover opacity-20">
+            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80" alt="Mobile Mechanic UAE Background" class="w-full h-full object-cover opacity-20">
             <div class="absolute inset-0 bg-gradient-to-b from-secondary-900/90 via-secondary-900/70 to-secondary-900/90"></div>
         </div>
 
@@ -155,6 +216,11 @@
                 
                 <button onclick="scrollToSection('services')" id="hero-cta-2" class="w-full sm:w-auto px-8 py-4 text-xl bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-lg font-bold">
                     View Services
+                </button>
+                
+                <!-- Mobile Only Buy Button in Hero -->
+                <button onclick="openBuyModal()" id="hero-cta-buy" class="md:hidden w-full sm:w-auto px-8 py-4 text-xl bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 rounded-lg font-bold">
+                    Buy This Website
                 </button>
             </div>
 
@@ -185,7 +251,7 @@
             <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
                 <div class="lg:col-span-5 mb-12 lg:mb-0 relative">
                     <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80" alt="Mechanic" class="w-full h-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?ixlib=rb-4.0.3&auto=format&fit=crop&w=987&q=80" alt="Professional Mechanic Toolset" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-secondary-900/60 to-transparent"></div>
                     </div>
                 </div>
@@ -236,7 +302,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+    <footer class="bg-gray-900 text-gray-400 py-12 border-t border-gray-800 pb-28 md:pb-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div class="col-span-1 md:col-span-2">
@@ -338,12 +404,16 @@
         </div>
     </div>
 
-    <!-- Sticky Mobile Button -->
-    <div class="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-gray-200 md:hidden z-40 shadow-lg">
-        <a href="tel:+201010373331" class="flex items-center justify-center w-full bg-primary-600 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-primary-700 transition-colors">
-            <span class="mr-2 rtl:mr-0 rtl:ml-2">📞</span>
-            <span id="mobile-sticky-btn">Call +201010373331</span>
+    <!-- Sticky Mobile Buttons (Two Buttons: Call & Buy) -->
+    <div class="fixed bottom-0 left-0 right-0 p-3 bg-white border-t border-gray-200 md:hidden z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] flex gap-3">
+        <a href="tel:+201010373331" class="flex-1 flex items-center justify-center bg-primary-600 text-white font-bold py-3 px-2 rounded-lg shadow hover:bg-primary-700 transition-colors text-sm">
+            <span class="mr-1 rtl:mr-0 rtl:ml-1">📞</span>
+            <span id="mobile-sticky-btn">Call Now</span>
         </a>
+        <button onclick="openBuyModal()" class="flex-1 flex items-center justify-center bg-secondary-900 text-white font-bold py-3 px-2 rounded-lg shadow hover:bg-secondary-800 transition-colors text-sm">
+            <span class="mr-1 rtl:mr-0 rtl:ml-1">🛒</span>
+            <span id="mobile-sticky-buy">Buy This Website</span>
+        </button>
     </div>
 
     <script src="script.js"></script>

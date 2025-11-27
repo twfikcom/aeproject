@@ -15,6 +15,7 @@ const CONTENT = {
       subtitle: "Stuck on the road or at home? Our certified mobile mechanics come to you anywhere in the UAE. Fast, reliable, and transparent pricing.",
       cta1: "Request Mechanic Now",
       cta2: "View Services",
+      ctaBuy: "Buy This Website",
       badge: "24/7 Emergency Service Available",
       stats: [
         { val: "30m", label: "Avg. Arrival" },
@@ -56,7 +57,9 @@ const CONTENT = {
     cta: {
       heading: "Ready to get back on the road?",
       subheading: "Don't let car trouble ruin your day. Call us now for immediate assistance.",
-      btn: "Call +201010373331"
+      btn: "Call +201010373331",
+      stickyBtn: "Call Now",
+      stickyBuy: "Buy Website"
     },
     footer: {
       desc: "The leading on-demand mobile mechanic service in the UAE.",
@@ -93,6 +96,7 @@ const CONTENT = {
       subtitle: "سيارتك متعطلة؟ نحن نأتي إليك في أي مكان في الإمارات. خدمة سريعة، موثوقة، وأسعار شفافة.",
       cta1: "اطلب ميكانيكي الآن",
       cta2: "عرض الخدمات",
+      ctaBuy: "شراء هذا الموقع",
       badge: "خدمة طوارئ ٢٤/٧ متوفرة",
       stats: [
         { val: "٣٠د", label: "متوسط الوصول" },
@@ -134,7 +138,9 @@ const CONTENT = {
     cta: {
       heading: "مستعد للعودة إلى الطريق؟",
       subheading: "لا تدع مشاكل السيارة تفسد يومك. اتصل بنا الآن للحصول على مساعدة فورية.",
-      btn: "اتصل بـ 201010373331+"
+      btn: "اتصل بـ 201010373331+",
+      stickyBtn: "اتصل الآن",
+      stickyBuy: "شراء الموقع"
     },
     footer: {
       desc: "خدمة الميكانيكي المتنقل الرائدة عند الطلب في الإمارات العربية المتحدة.",
@@ -158,10 +164,8 @@ const CONTENT = {
   }
 };
 
-// SVG Icons
+// SVG Icons (Simplified)
 const ICONS = {
-  battery: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3v18h18V3H3zm8 3h6v6h-6V6zm-5 4h2v2H6v-2zm12 0h2v2h-2v-2z"></path><rect x="2" y="6" width="20" height="12" rx="2" ry="2" /><line x1="6" y1="12" x2="6" y2="12" /><line x1="18" y1="12" x2="18" y2="12" /></svg>', 
-  // Simplified replacements for Lucide
   battery: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect><line x1="23" y1="13" x2="23" y2="11"></line></svg>',
   droplet: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>',
   disc: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>',
@@ -178,10 +182,30 @@ document.addEventListener('DOMContentLoaded', () => {
     updateContent();
 });
 
-// Toggle Language
-function toggleLanguage() {
+// Explicitly attach functions to window to allow HTML onclick access
+window.toggleLanguage = function() {
     currentLang = currentLang === 'en' ? 'ar' : 'en';
     updateContent();
+}
+
+window.toggleMobileMenu = function() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+}
+
+window.scrollToSection = function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+window.openBuyModal = function() {
+    document.getElementById('buy-modal').classList.remove('hidden');
+}
+
+window.closeBuyModal = function() {
+    document.getElementById('buy-modal').classList.add('hidden');
 }
 
 // Update DOM elements
@@ -214,6 +238,7 @@ function updateContent() {
     setText('hero-subtitle', t.hero.subtitle);
     setText('hero-cta-1', t.hero.cta1);
     setText('hero-cta-2', t.hero.cta2);
+    setText('hero-cta-buy', t.hero.ctaBuy);
 
     setText('services-heading', t.services.heading);
     setText('services-subheading', t.services.subheading);
@@ -226,7 +251,8 @@ function updateContent() {
     setText('cta-heading', t.cta.heading);
     setText('cta-subheading', t.cta.subheading);
     setText('cta-button', t.cta.btn);
-    setText('mobile-sticky-btn', t.cta.btn);
+    setText('mobile-sticky-btn', t.cta.stickyBtn);
+    setText('mobile-sticky-buy', t.cta.stickyBuy);
 
     setText('footer-desc', t.footer.desc);
     setText('footer-quick', t.footer.quick);
@@ -248,7 +274,10 @@ function updateContent() {
     // Update WhatsApp Links with Message
     const whatsappNum = "201010373331";
     const msg = encodeURIComponent(t.buyModal.whatsappMsg);
-    document.getElementById('modal-whatsapp-link').href = `https://wa.me/${whatsappNum}?text=${msg}`;
+    const link = document.getElementById('modal-whatsapp-link');
+    if (link) {
+      link.href = `https://wa.me/${whatsappNum}?text=${msg}`;
+    }
 
     // Render Lists
     renderStats(t.hero.stats);
@@ -263,23 +292,10 @@ function setText(id, text) {
     if (el) el.innerText = text;
 }
 
-// Mobile Menu Toggle
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
-}
-
-// Scroll to Section
-function scrollToSection(id) {
-    const el = document.getElementById(id);
-    if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
 // Render Stats
 function renderStats(stats) {
     const container = document.getElementById('stats-container');
+    if (!container) return;
     container.innerHTML = stats.map(stat => `
         <div class="text-center">
             <div class="text-3xl font-bold text-white mb-1">${stat.val}</div>
@@ -291,6 +307,7 @@ function renderStats(stats) {
 // Render Services
 function renderServices(items) {
     const container = document.getElementById('services-grid');
+    if (!container) return;
     container.innerHTML = items.map(item => `
         <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 group">
             <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary-600 mb-6 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
@@ -305,6 +322,7 @@ function renderServices(items) {
 // Render Features
 function renderFeatures(items) {
     const container = document.getElementById('features-list');
+    if (!container) return;
     container.innerHTML = items.map(item => `
         <div class="flex gap-4">
             <div class="flex-shrink-0">
@@ -323,6 +341,7 @@ function renderFeatures(items) {
 // Render Testimonials
 function renderTestimonials(items) {
     const container = document.getElementById('testimonials-grid');
+    if (!container) return;
     container.innerHTML = items.map(item => `
         <div class="bg-secondary-800 p-8 rounded-2xl border border-secondary-700 relative">
             <div class="absolute top-8 right-8 rtl:left-8 rtl:right-auto text-secondary-600 opacity-20">
@@ -345,13 +364,4 @@ function renderTestimonials(items) {
             </div>
         </div>
     `).join('');
-}
-
-// Modal Logic
-function openBuyModal() {
-    document.getElementById('buy-modal').classList.remove('hidden');
-}
-
-function closeBuyModal() {
-    document.getElementById('buy-modal').classList.add('hidden');
 }
