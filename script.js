@@ -164,7 +164,7 @@ const CONTENT = {
   }
 };
 
-// SVG Icons (Simplified)
+// SVG Icons
 const ICONS = {
   battery: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect><line x1="23" y1="13" x2="23" y2="11"></line></svg>',
   droplet: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>',
@@ -174,51 +174,62 @@ const ICONS = {
   wind: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>'
 };
 
-// Global State
-let currentLang = 'en';
+// --- Logic ---
 
-// Initialization
-document.addEventListener('DOMContentLoaded', () => {
-    updateContent();
-});
+// Detect language from HTML attribute
+const currentLang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
 
-// Explicitly attach functions to window to allow HTML onclick access
-window.toggleLanguage = function() {
-    currentLang = currentLang === 'en' ? 'ar' : 'en';
-    updateContent();
+// Define functions explicitly
+function toggleLanguage() {
+    if (currentLang === 'en') {
+        window.location.href = 'ar.html';
+    } else {
+        window.location.href = 'index.html'; 
+    }
 }
 
-window.toggleMobileMenu = function() {
+function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
+    if (menu) {
+        menu.classList.toggle('hidden');
+    }
 }
 
-window.scrollToSection = function(id) {
+function scrollToSection(id) {
     const el = document.getElementById(id);
     if (el) {
         el.scrollIntoView({ behavior: 'smooth' });
     }
 }
 
-window.openBuyModal = function() {
-    document.getElementById('buy-modal').classList.remove('hidden');
+function openBuyModal() {
+    const modal = document.getElementById('buy-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+    }
 }
 
-window.closeBuyModal = function() {
-    document.getElementById('buy-modal').classList.add('hidden');
+function closeBuyModal() {
+    const modal = document.getElementById('buy-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
 }
 
-// Update DOM elements
 function updateContent() {
+    // Safety check if CONTENT is defined
+    if (typeof CONTENT === 'undefined' || !CONTENT[currentLang]) return;
+
     const t = CONTENT[currentLang];
     const isAr = currentLang === 'ar';
-    
-    // HTML Attributes
-    document.documentElement.lang = currentLang;
-    document.documentElement.dir = isAr ? 'rtl' : 'ltr';
-    document.body.className = isAr ? 'font-arabic text-gray-800 bg-white' : 'font-sans text-gray-800 bg-white';
 
-    // Text Updates by ID
+    // Helper to safely set text
+    const setText = (id, text) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = text;
+    };
+
+    // --- Navigation ---
     setText('nav-services', t.nav.services);
     setText('mobile-nav-services', t.nav.services);
     setText('nav-about', t.nav.about);
@@ -232,6 +243,7 @@ function updateContent() {
     setText('nav-lang', t.nav.langBtn);
     setText('nav-lang-mobile', isAr ? 'EN' : 'AR');
 
+    // --- Hero ---
     setText('hero-badge', t.hero.badge);
     setText('hero-title-1', t.hero.title1);
     setText('hero-title-2', t.hero.title2);
@@ -240,14 +252,14 @@ function updateContent() {
     setText('hero-cta-2', t.hero.cta2);
     setText('hero-cta-buy', t.hero.ctaBuy);
 
+    // --- Sections ---
     setText('services-heading', t.services.heading);
     setText('services-subheading', t.services.subheading);
-    
     setText('features-heading', t.features.heading);
     setText('features-subheading', t.features.subheading);
-    
     setText('testimonials-heading', t.testimonials.heading);
 
+    // --- CTA & Footer ---
     setText('cta-heading', t.cta.heading);
     setText('cta-subheading', t.cta.subheading);
     setText('cta-button', t.cta.btn);
@@ -260,7 +272,7 @@ function updateContent() {
     setText('footer-buy', t.footer.buy);
     setText('footer-rights', t.footer.rights);
 
-    // Modal
+    // --- Modal ---
     setText('modal-title', t.buyModal.title);
     setText('modal-subtitle', t.buyModal.subtitle);
     setText('modal-whatsapp-btn', t.buyModal.whatsappBtn);
@@ -270,98 +282,92 @@ function updateContent() {
     setText('label-email', t.buyModal.emailLabel);
     setText('label-message', t.buyModal.messageLabel);
     setText('modal-submit', t.buyModal.submitBtn);
-    
-    // Update WhatsApp Links with Message
+
+    // Update WhatsApp Links
     const whatsappNum = "201010373331";
     const msg = encodeURIComponent(t.buyModal.whatsappMsg);
     const link = document.getElementById('modal-whatsapp-link');
     if (link) {
-      link.href = `https://wa.me/${whatsappNum}?text=${msg}`;
+        link.href = `https://wa.me/${whatsappNum}?text=${msg}`;
     }
 
-    // Render Lists
-    renderStats(t.hero.stats);
-    renderServices(t.services.items);
-    renderFeatures(t.features.items);
-    renderTestimonials(t.testimonials.items);
-}
-
-// Helpers
-function setText(id, text) {
-    const el = document.getElementById(id);
-    if (el) el.innerText = text;
-}
-
-// Render Stats
-function renderStats(stats) {
-    const container = document.getElementById('stats-container');
-    if (!container) return;
-    container.innerHTML = stats.map(stat => `
-        <div class="text-center">
-            <div class="text-3xl font-bold text-white mb-1">${stat.val}</div>
-            <div class="text-sm text-gray-400 uppercase tracking-wide">${stat.label}</div>
-        </div>
-    `).join('');
-}
-
-// Render Services
-function renderServices(items) {
-    const container = document.getElementById('services-grid');
-    if (!container) return;
-    container.innerHTML = items.map(item => `
-        <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 group">
-            <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary-600 mb-6 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
-                ${ICONS[item.icon] || ICONS.battery}
+    // Render Stats
+    const statsContainer = document.getElementById('stats-container');
+    if (statsContainer) {
+        statsContainer.innerHTML = t.hero.stats.map(stat => `
+            <div class="text-center">
+                <div class="text-3xl font-bold text-white mb-1">${stat.val}</div>
+                <div class="text-sm text-gray-400 uppercase tracking-wide">${stat.label}</div>
             </div>
-            <h3 class="text-xl font-bold text-gray-900 mb-3">${item.title}</h3>
-            <p class="text-gray-600 leading-relaxed">${item.desc}</p>
-        </div>
-    `).join('');
-}
+        `).join('');
+    }
 
-// Render Features
-function renderFeatures(items) {
-    const container = document.getElementById('features-list');
-    if (!container) return;
-    container.innerHTML = items.map(item => `
-        <div class="flex gap-4">
-            <div class="flex-shrink-0">
-                <div class="w-10 h-10 rounded-full bg-secondary-100 flex items-center justify-center text-secondary-700 font-bold">
-                    ${item.id}
+    // Render Services
+    const servicesContainer = document.getElementById('services-grid');
+    if (servicesContainer) {
+        servicesContainer.innerHTML = t.services.items.map(item => `
+            <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 group">
+                <div class="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center text-primary-600 mb-6 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
+                    ${ICONS[item.icon] || ICONS.battery}
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">${item.title}</h3>
+                <p class="text-gray-600 leading-relaxed">${item.desc}</p>
+            </div>
+        `).join('');
+    }
+
+    // Render Features
+    const featuresContainer = document.getElementById('features-list');
+    if (featuresContainer) {
+        featuresContainer.innerHTML = t.features.items.map(item => `
+            <div class="flex gap-4">
+                <div class="flex-shrink-0">
+                    <div class="w-10 h-10 rounded-full bg-secondary-100 flex items-center justify-center text-secondary-700 font-bold">
+                        ${item.id}
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-2">${item.title}</h4>
+                    <p class="text-gray-600">${item.desc}</p>
                 </div>
             </div>
-            <div>
-                <h4 class="text-xl font-bold text-gray-900 mb-2">${item.title}</h4>
-                <p class="text-gray-600">${item.desc}</p>
+        `).join('');
+    }
+
+    // Render Testimonials
+    const testimonialsContainer = document.getElementById('testimonials-grid');
+    if (testimonialsContainer) {
+        testimonialsContainer.innerHTML = t.testimonials.items.map(item => `
+            <div class="bg-secondary-800 p-8 rounded-2xl border border-secondary-700 relative">
+                <div class="absolute top-8 right-8 rtl:left-8 rtl:right-auto text-secondary-600 opacity-20">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H9C9.00001 15 9.00001 12 11 11C10.6667 11 10.3333 11 10 11V8C10 8 13.0833 8 13.0833 8C15.0833 8 16 10 16 13V17C16 17 14.017 17 14.017 21ZM5 21C5 21 3 21 3 17V13C3 10 4 8 6 8C6 8 9.08333 8 9.08333 8V11C8.75 11 8.41667 11 8 11C6 12 6 15 6 16H9C10.1046 16 11 16.8954 11 18V21L5 21Z" />
+                    </svg>
+                </div>
+                <div class="flex mb-4 text-yellow-400">
+                    ${Array(item.rating).fill('<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>').join('')}
+                </div>
+                <p class="text-gray-300 mb-6 leading-relaxed italic">"${item.text}"</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center font-bold text-white text-lg">
+                        ${item.name.charAt(0)}
+                    </div>
+                    <div class="ml-4 rtl:ml-0 rtl:mr-4">
+                        <div class="font-bold text-white">${item.name}</div>
+                        <div class="text-sm text-secondary-300">${item.loc}</div>
+                    </div>
+                </div>
             </div>
-        </div>
-    `).join('');
+        `).join('');
+    }
 }
 
-// Render Testimonials
-function renderTestimonials(items) {
-    const container = document.getElementById('testimonials-grid');
-    if (!container) return;
-    container.innerHTML = items.map(item => `
-        <div class="bg-secondary-800 p-8 rounded-2xl border border-secondary-700 relative">
-            <div class="absolute top-8 right-8 rtl:left-8 rtl:right-auto text-secondary-600 opacity-20">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16H9C9.00001 15 9.00001 12 11 11C10.6667 11 10.3333 11 10 11V8C10 8 13.0833 8 13.0833 8C15.0833 8 16 10 16 13V17C16 17 14.017 17 14.017 21ZM5 21C5 21 3 21 3 17V13C3 10 4 8 6 8C6 8 9.08333 8 9.08333 8V11C8.75 11 8.41667 11 8 11C6 12 6 15 6 16H9C10.1046 16 11 16.8954 11 18V21L5 21Z" />
-                </svg>
-            </div>
-            <div class="flex mb-4 text-yellow-400">
-                ${Array(item.rating).fill('<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>').join('')}
-            </div>
-            <p class="text-gray-300 mb-6 leading-relaxed italic">"${item.text}"</p>
-            <div class="flex items-center">
-                <div class="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center font-bold text-white text-lg">
-                    ${item.name.charAt(0)}
-                </div>
-                <div class="ml-4 rtl:ml-0 rtl:mr-4">
-                    <div class="font-bold text-white">${item.name}</div>
-                    <div class="text-sm text-secondary-300">${item.loc}</div>
-                </div>
-            </div>
-        </div>
-    `).join('');
-}
+// Assign to window for global access
+window.toggleLanguage = toggleLanguage;
+window.toggleMobileMenu = toggleMobileMenu;
+window.scrollToSection = scrollToSection;
+window.openBuyModal = openBuyModal;
+window.closeBuyModal = closeBuyModal;
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', updateContent);
