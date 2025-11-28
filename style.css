@@ -10,7 +10,7 @@ body.font-arabic {
 
 /* Helper Class to ensure hidden works regardless of Tailwind load status */
 .hidden {
-    display: none !important;
+    display: none;
 }
 
 /* Smooth Scrolling */
