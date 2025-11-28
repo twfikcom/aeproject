@@ -1,3 +1,28 @@
+// --- Global Logic ---
+
+// Function to hide the loading screen
+function hideLoader() {
+    const loader = document.getElementById('loader-wrapper');
+    if (loader) {
+        loader.classList.add('hidden');
+    }
+}
+
+// Make accessible to window
+window.hideLoader = hideLoader;
+
+// --- Event Listeners ---
+
+// 1. Hide loader when everything is fully loaded (images, etc.)
+window.addEventListener('load', function() {
+    // Small delay to ensure smooth transition
+    setTimeout(hideLoader, 500);
+});
+
+// 2. Failsafe: Hide loader after 3 seconds max, in case something hangs
+setTimeout(hideLoader, 3000);
+
+
 // Content Dictionary
 const CONTENT = {
   en: {
@@ -166,7 +191,7 @@ const CONTENT = {
 
 // SVG Icons
 const ICONS = {
-  battery: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect><line x1="23" y1="13" x2="23" y2="11"></line></svg>',
+  battery: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect><line x1="23" y1="13" x2="23" y1="11"></line></svg>',
   droplet: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>',
   disc: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>',
   laptop: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="20" x2="22" y2="20"></line></svg>',
