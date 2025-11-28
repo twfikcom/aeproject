@@ -180,14 +180,6 @@ const ICONS = {
 const currentLang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
 
 // Define functions explicitly
-function toggleLanguage() {
-    if (currentLang === 'en') {
-        window.location.href = 'ar.html';
-    } else {
-        window.location.href = 'index.html'; 
-    }
-}
-
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     if (menu) {
@@ -363,7 +355,6 @@ function updateContent() {
 }
 
 // Assign to window for global access
-window.toggleLanguage = toggleLanguage;
 window.toggleMobileMenu = toggleMobileMenu;
 window.scrollToSection = scrollToSection;
 window.openBuyModal = openBuyModal;
