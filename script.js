@@ -7,23 +7,61 @@ function hideLoader() {
         loader.classList.add('hidden');
     }
 }
-
-// Make accessible to window
+// Expose immediately
 window.hideLoader = hideLoader;
+
+// --- Helper Functions ---
+
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) {
+        menu.classList.toggle('hidden');
+    }
+}
+
+function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+function openBuyModal() {
+    console.log("Opening Buy Modal");
+    const modal = document.getElementById('buy-modal');
+    if (modal) {
+        modal.classList.remove('hidden');
+    } else {
+        console.error("Buy modal element not found!");
+    }
+}
+
+function closeBuyModal() {
+    const modal = document.getElementById('buy-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+// Assign to window immediately to ensure accessibility for inline onclick handlers
+window.toggleMobileMenu = toggleMobileMenu;
+window.scrollToSection = scrollToSection;
+window.openBuyModal = openBuyModal;
+window.closeBuyModal = closeBuyModal;
+
 
 // --- Event Listeners ---
 
-// 1. Hide loader when everything is fully loaded (images, etc.)
+// 1. Hide loader when everything is fully loaded
 window.addEventListener('load', function() {
-    // Small delay to ensure smooth transition
     setTimeout(hideLoader, 500);
 });
 
-// 2. Failsafe: Hide loader after 3 seconds max, in case something hangs
-setTimeout(hideLoader, 3000);
+// 2. Failsafe: Hide loader after 2.5 seconds max
+setTimeout(hideLoader, 2500);
 
 
-// Content Dictionary
+// --- Content Dictionary ---
 const CONTENT = {
   en: {
     nav: {
@@ -199,39 +237,10 @@ const ICONS = {
   wind: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"></path></svg>'
 };
 
-// --- Logic ---
+// --- Update Logic ---
 
 // Detect language from HTML attribute
 const currentLang = document.documentElement.lang === 'ar' ? 'ar' : 'en';
-
-// Define functions explicitly
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    if (menu) {
-        menu.classList.toggle('hidden');
-    }
-}
-
-function scrollToSection(id) {
-    const el = document.getElementById(id);
-    if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-    }
-}
-
-function openBuyModal() {
-    const modal = document.getElementById('buy-modal');
-    if (modal) {
-        modal.classList.remove('hidden');
-    }
-}
-
-function closeBuyModal() {
-    const modal = document.getElementById('buy-modal');
-    if (modal) {
-        modal.classList.add('hidden');
-    }
-}
 
 function updateContent() {
     // Safety check if CONTENT is defined
@@ -379,11 +388,5 @@ function updateContent() {
     }
 }
 
-// Assign to window for global access
-window.toggleMobileMenu = toggleMobileMenu;
-window.scrollToSection = scrollToSection;
-window.openBuyModal = openBuyModal;
-window.closeBuyModal = closeBuyModal;
-
-// Initialize on load
+// Initialize content on load
 document.addEventListener('DOMContentLoaded', updateContent);
