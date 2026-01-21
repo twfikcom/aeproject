@@ -120,9 +120,10 @@ const CONTENT = {
     cta: {
       heading: "Ready to get back on the road?",
       subheading: "Don't let car trouble ruin your day. Call us now for immediate assistance.",
-      btn: "Call +201010373331",
+      btn: "Call +971 56 488 8556",
       stickyBtn: "Call Now",
-      stickyBuy: "Buy Website"
+      stickyBuy: "Buy Website",
+      serviceWhatsappMsg: "Hi, I am coming from the Mobile Mechanic UAE website and I need assistance with my car."
     },
     footer: {
       desc: "The leading on-demand mobile mechanic service in the UAE.",
@@ -201,9 +202,10 @@ const CONTENT = {
     cta: {
       heading: "مستعد للعودة إلى الطريق؟",
       subheading: "لا تدع مشاكل السيارة تفسد يومك. اتصل بنا الآن للحصول على مساعدة فورية.",
-      btn: "اتصل بـ 201010373331+",
+      btn: "اتصل بـ 971564888556+",
       stickyBtn: "اتصل الآن",
-      stickyBuy: "شراء الموقع"
+      stickyBuy: "شراء الموقع",
+      serviceWhatsappMsg: "مرحباً، أنا أتواصل معكم من خلال موقع ميكانيكي الإمارات وأحتاج إلى مساعدة في سيارتي."
     },
     footer: {
       desc: "خدمة الميكانيكي المتنقل الرائدة عند الطلب في الإمارات العربية المتحدة.",
@@ -229,7 +231,7 @@ const CONTENT = {
 
 // SVG Icons
 const ICONS = {
-  battery: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect><line x1="23" y1="13" x2="23" y1="11"></line></svg>',
+  battery: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect><line x1="23" y1="13" x2="23" y2="11"></line></svg>',
   droplet: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>',
   disc: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle></svg>',
   laptop: '<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="20" x2="22" y2="20"></line></svg>',
@@ -310,11 +312,21 @@ function updateContent() {
     setText('modal-submit', t.buyModal.submitBtn);
 
     // Update WhatsApp Links
-    const whatsappNum = "201010373331";
-    const msg = encodeURIComponent(t.buyModal.whatsappMsg);
-    const link = document.getElementById('modal-whatsapp-link');
-    if (link) {
-        link.href = `https://wa.me/${whatsappNum}?text=${msg}`;
+    const buyWhatsappNum = "201010373331";
+    const serviceWhatsappNum = "971564888556";
+    
+    // Modal WhatsApp (Buy Website)
+    const modalMsg = encodeURIComponent(t.buyModal.whatsappMsg);
+    const modalLink = document.getElementById('modal-whatsapp-link');
+    if (modalLink) {
+        modalLink.href = `https://wa.me/${buyWhatsappNum}?text=${modalMsg}`;
+    }
+
+    // Service WhatsApp (In Contact Section)
+    const serviceMsg = encodeURIComponent(t.cta.serviceWhatsappMsg);
+    const serviceLink = document.getElementById('service-whatsapp-link');
+    if (serviceLink) {
+        serviceLink.href = `https://wa.me/${serviceWhatsappNum}?text=${serviceMsg}`;
     }
 
     // Render Stats
