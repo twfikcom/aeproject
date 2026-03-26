@@ -1,5 +1,3 @@
-import { LucideIcon } from 'lucide-react';
-
 export type Language = 'en' | 'ar';
 
 export interface NavItem {

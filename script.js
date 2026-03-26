@@ -120,8 +120,8 @@ const CONTENT = {
     cta: {
       heading: "Ready to get back on the road?",
       subheading: "Don't let car trouble ruin your day. Call us now for immediate assistance.",
-      btn: "Call +971 56 488 8556",
-      stickyBtn: "Call Now",
+      btn: "WhatsApp +971 56 488 8556",
+      stickyBtn: "WhatsApp Now",
       stickyBuy: "Buy Website",
       serviceWhatsappMsg: "Hi, I am coming from the Mobile Mechanic UAE website and I need assistance with my car."
     },
@@ -202,8 +202,8 @@ const CONTENT = {
     cta: {
       heading: "مستعد للعودة إلى الطريق؟",
       subheading: "لا تدع مشاكل السيارة تفسد يومك. اتصل بنا الآن للحصول على مساعدة فورية.",
-      btn: "اتصل بـ 971564888556+",
-      stickyBtn: "اتصل الآن",
+      btn: "واتساب 971564888556+",
+      stickyBtn: "تواصل واتساب",
       stickyBuy: "شراء الموقع",
       serviceWhatsappMsg: "مرحباً، أنا أتواصل معكم من خلال موقع ميكانيكي الإمارات وأحتاج إلى مساعدة في سيارتي."
     },

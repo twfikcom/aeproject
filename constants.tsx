@@ -73,7 +73,7 @@ export const CONTENT: Record<'en' | 'ar', Translations> = {
     ctaSection: {
       heading: "Ready to get back on the road?",
       subheading: "Don't let car trouble ruin your day. Call us now for immediate assistance.",
-      buttonText: "Call 800-MECHANIC",
+      buttonText: "WhatsApp +971 56 488 8556",
     },
     testimonials: {
       heading: "Trusted by Drivers Across UAE",
@@ -177,7 +177,7 @@ export const CONTENT: Record<'en' | 'ar', Translations> = {
     ctaSection: {
       heading: "مستعد للعودة إلى الطريق؟",
       subheading: "لا تدع مشاكل السيارة تفسد يومك. اتصل بنا الآن للحصول على مساعدة فورية.",
-      buttonText: "اتصل بـ 800-MECHANIC",
+      buttonText: "واتساب 971564888556+",
     },
     testimonials: {
       heading: "يثق بنا السائقون في الإمارات",
