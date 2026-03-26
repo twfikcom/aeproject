@@ -73,7 +73,7 @@ export const CONTENT: Record<'en' | 'ar', Translations> = {
     ctaSection: {
       heading: "Ready to get back on the road?",
       subheading: "Don't let car trouble ruin your day. Call us now for immediate assistance.",
-      buttonText: "WhatsApp +971 56 488 8556",
+      buttonText: "WhatsApp +201010373331",
     },
     testimonials: {
       heading: "Trusted by Drivers Across UAE",
@@ -177,7 +177,7 @@ export const CONTENT: Record<'en' | 'ar', Translations> = {
     ctaSection: {
       heading: "مستعد للعودة إلى الطريق؟",
       subheading: "لا تدع مشاكل السيارة تفسد يومك. اتصل بنا الآن للحصول على مساعدة فورية.",
-      buttonText: "واتساب 971564888556+",
+      buttonText: "واتساب 201010373331+",
     },
     testimonials: {
       heading: "يثق بنا السائقون في الإمارات",

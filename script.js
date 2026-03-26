@@ -120,7 +120,7 @@ const CONTENT = {
     cta: {
       heading: "Ready to get back on the road?",
       subheading: "Don't let car trouble ruin your day. Call us now for immediate assistance.",
-      btn: "WhatsApp +971 56 488 8556",
+      btn: "WhatsApp +201010373331",
       stickyBtn: "WhatsApp Now",
       stickyBuy: "Buy Website",
       serviceWhatsappMsg: "Hi, I am coming from the Mobile Mechanic UAE website and I need assistance with my car."
@@ -202,7 +202,7 @@ const CONTENT = {
     cta: {
       heading: "مستعد للعودة إلى الطريق؟",
       subheading: "لا تدع مشاكل السيارة تفسد يومك. اتصل بنا الآن للحصول على مساعدة فورية.",
-      btn: "واتساب 971564888556+",
+      btn: "واتساب 201010373331+",
       stickyBtn: "تواصل واتساب",
       stickyBuy: "شراء الموقع",
       serviceWhatsappMsg: "مرحباً، أنا أتواصل معكم من خلال موقع ميكانيكي الإمارات وأحتاج إلى مساعدة في سيارتي."
@@ -313,7 +313,7 @@ function updateContent() {
 
     // Update WhatsApp Links
     const buyWhatsappNum = "201010373331";
-    const serviceWhatsappNum = "971564888556";
+    const serviceWhatsappNum = "201010373331";
     
     // Modal WhatsApp (Buy Website)
     const modalMsg = encodeURIComponent(t.buyModal.whatsappMsg);
@@ -322,8 +322,28 @@ function updateContent() {
         modalLink.href = `https://wa.me/${buyWhatsappNum}?text=${modalMsg}`;
     }
 
-    // Service WhatsApp (In Contact Section)
+    // Service WhatsApp Links
     const serviceMsg = encodeURIComponent(t.cta.serviceWhatsappMsg);
+    
+    // Hero Link
+    const heroLink = document.getElementById('hero-whatsapp-link');
+    if (heroLink) {
+        heroLink.href = `https://wa.me/${serviceWhatsappNum}?text=${serviceMsg}`;
+    }
+
+    // Sticky Mobile Link
+    const stickyLink = document.getElementById('sticky-whatsapp-link');
+    if (stickyLink) {
+        stickyLink.href = `https://wa.me/${serviceWhatsappNum}?text=${serviceMsg}`;
+    }
+
+    // Footer Phone Link
+    const footerLink = document.getElementById('footer-phone-link');
+    if (footerLink) {
+        footerLink.href = `https://wa.me/${serviceWhatsappNum}?text=${serviceMsg}`;
+    }
+
+    // Service WhatsApp (In Contact Section)
     const serviceLink = document.getElementById('service-whatsapp-link');
     if (serviceLink) {
         serviceLink.href = `https://wa.me/${serviceWhatsappNum}?text=${serviceMsg}`;
