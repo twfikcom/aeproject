@@ -121,7 +121,7 @@ const CONTENT = {
       heading: "Ready to get back on the road?",
       subheading: "Don't let car trouble ruin your day. Call us now for immediate assistance.",
       btn: "WhatsApp +201010373331",
-      stickyBtn: "Call Now",
+      stickyBtn: "WhatsApp",
       stickyBuy: "Buy Website",
       serviceWhatsappMsg: "Hi, I am coming from the Mobile Mechanic UAE website and I need assistance with my car."
     },
@@ -203,7 +203,7 @@ const CONTENT = {
       heading: "مستعد للعودة إلى الطريق؟",
       subheading: "لا تدع مشاكل السيارة تفسد يومك. اتصل بنا الآن للحصول على مساعدة فورية.",
       btn: "واتساب 201010373331+",
-      stickyBtn: "اتصل الآن",
+      stickyBtn: "واتساب",
       stickyBuy: "شراء الموقع",
       serviceWhatsappMsg: "مرحباً، أنا أتواصل معكم من خلال موقع ميكانيكي الإمارات وأحتاج إلى مساعدة في سيارتي."
     },
@@ -334,7 +334,7 @@ function updateContent() {
     // Sticky Mobile Link
     const stickyLink = document.getElementById('sticky-call-link');
     if (stickyLink) {
-        stickyLink.href = `tel:+971564888556`;
+        stickyLink.href = `https://wa.me/${serviceWhatsappNum}?text=${serviceMsg}`;
     }
 
     // Footer Phone Link
