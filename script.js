@@ -298,7 +298,6 @@ function updateContent() {
     setText('footer-quick', t.footer.quick);
     setText('footer-contact', t.footer.contact);
     setText('footer-buy', t.footer.buy);
-    setText('footer-rights', t.footer.rights);
 
     // --- Modal ---
     setText('modal-title', t.buyModal.title);
